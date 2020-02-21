@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/SpriteArt/GameTempground.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Fonts/ActionButton.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scripts/Button.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Fonts/TimeburnerBold-peGR.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Scripts/FlightyTitle.anim" type="Animation" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+outline_size = 3
+outline_color = Color( 0.329412, 0.380392, 0.47451, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="Title" type="Node2D"]
+
+[node name="TitleAnimator" type="AnimationPlayer" parent="."]
+autoplay = "FlightyTitle"
+method_call_mode = 1
+anims/FlightyTitle = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1600.0
+margin_bottom = 896.0
+color = Color( 0.270254, 0.375, 0.111328, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 800, 448 )
+scale = Vector2( 0.96, 0.693333 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 528.0
+margin_top = 688.0
+margin_right = 1056.0
+margin_bottom = 784.0
+custom_fonts/font = ExtResource( 2 )
+text = "Play Game"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+nextScene = "res://Scenes/Combat.tscn"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 250.0
+margin_top = 367.611
+margin_right = 1309.0
+margin_bottom = 497.612
+custom_fonts/font = SubResource( 1 )
+text = "SciFi with Magic... I guess"
+align = 1
+valign = 1
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

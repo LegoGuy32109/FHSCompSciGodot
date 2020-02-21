@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Fonts/ActionButton.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/CharacterStatTitle.tres" type="DynamicFont" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Assets/SpriteArt/GoblinSprite.png" type="Texture" id=5]
 [ext_resource path="res://Assets/SpriteArt/GameTempground.png" type="Texture" id=6]
 [ext_resource path="res://Assets/SpriteArt/SirJohnSprite.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/TextCrawl.anim" type="Animation" id=8]
+[ext_resource path="res://Scripts/Button.gd" type="Script" id=9]
 
 [node name="Combat" type="Node2D"]
 
@@ -20,13 +22,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Log"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Log"]
+autoplay = "LogTextIntro"
+method_call_mode = 1
+anims/LogTextIntro = ExtResource( 8 )
+
+[node name="TextLog" type="RichTextLabel" parent="Log"]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 784.0
 margin_bottom = 496.0
 custom_fonts/normal_font = ExtResource( 4 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
+visible_characters = 0
+percent_visible = 0.0
 meta_underlined = false
 text = "Your party has been attacked by a Goblin!!
 The Goblin strikes Sir John!
@@ -38,6 +47,7 @@ CRITICAL HIT!!!
 Sir John takes 20 damage!
 Sir John tries to attack and fails miserably! What a loser! This Guy Sucks!"
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -228,6 +238,7 @@ custom_fonts/font = ExtResource( 1 )
 text = "  Attack"
 align = 0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -241,19 +252,21 @@ custom_fonts/font = ExtResource( 1 )
 text = "  Magic"
 align = 0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="ItemsBut" type="Button" parent="Actions"]
 modulate = Color( 0.996078, 0.796078, 0.560784, 1 )
 margin_left = 32.0
-margin_top = 192.0
+margin_top = 193.36
 margin_right = 368.0
-margin_bottom = 320.0
+margin_bottom = 321.36
 custom_fonts/font = ExtResource( 1 )
 text = "  Items"
 align = 0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -266,27 +279,30 @@ margin_bottom = 320.0
 custom_fonts/font = ExtResource( 1 )
 text = "  Flee!"
 align = 0
+script = ExtResource( 9 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+nextScene = "res://Scenes/Title.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 7.0
+margin_left = 8.36038
 margin_top = 629.0
-margin_right = 236.0
+margin_right = 237.36
 margin_bottom = 871.0
-color = Color( 1, 1, 1, 0.960784 )
+color = Color( 0.87451, 0.87451, 0.87451, 0.960784 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerIcon" type="Sprite" parent="."]
-position = Vector2( 114.491, 749.842 )
+[node name="PlayerIcon" type="Sprite" parent="ColorRect"]
+position = Vector2( 107.491, 120.842 )
 scale = Vector2( 0.168114, 0.201316 )
 texture = ExtResource( 7 )
 
 [node name="BackGround" type="Sprite" parent="."]
-modulate = Color( 0.921569, 0.87451, 0.87451, 1 )
+modulate = Color( 0.909804, 0.823529, 0.823529, 1 )
 position = Vector2( 400, 256 )
 scale = Vector2( 0.5, 0.426667 )
 texture = ExtResource( 6 )
