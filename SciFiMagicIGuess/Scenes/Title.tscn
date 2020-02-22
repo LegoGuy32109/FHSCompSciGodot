@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Fonts/ActionButton.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/Button.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Fonts/TimeburnerBold-peGR.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://Scripts/FlightyTitle.anim" type="Animation" id=5]
+[ext_resource path="res://Scripts/Animations/FlightyTitle.anim" type="Animation" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -38,6 +38,7 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 528.0
 margin_top = 688.0
 margin_right = 1056.0

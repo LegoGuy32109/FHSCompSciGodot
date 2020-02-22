@@ -1,0 +1,103 @@
+2/22/20 Saturday Morning - Josh
+Decided to make a dev log to track my thoughts, the game is getting big enough
+that I think having notes would be handy. 
+
+I have already successfully implemented the title sequence (or at least a test
+version) with my own working title, 'SciFi Magic I Guess...' Dylan and Aaron
+are trying to think of an actual name. I'm more concerned with the functionality
+Oh Dylan said he's almost done with some character creation which should be
+interesting. That would help establish some story points and from that a title, 
+plot, whole point of the game maybe. 
+
+What I am working on is the Attack menu, the list of moves that would pop up
+when the 'Attack' button is clicked. Took me longer than I liked to figure out
+how I could do that cleanly in Godot... viewports didn't work, hiding elements
+and showing them would but is annoying, but the best option I've found is having
+a new scene rendered specifically for the attack menu, and have it spawn from a 
+certain 2Dnode. (I named it spawner, duh) So, when I figure out how to use all
+these control nodes correctly like margin containers and Vboxes to get the moves
+to display how I want them too... I can then make variations of that model for
+the magic and item buttons. 
+
+A couple concerns I have, I need to have a script
+create each action instead of me just type in every move. Also items would 
+especially need a scroll bar functionality to it, and I think each action needs
+a little description with it... that would be complicated with the current 
+layout. Right now the 'sword', 'fist', text is big which I like. Maybe when you
+hover over a button it expands and you see the description? That sounds really
+difficult right now but it's a thought. 
+
+Also about this file: I'm fine with people adding to it with their updates and 
+thoughts about the game, but don't delete anything, and title your entry like I
+did. Ofc I probably don't need to worry, I've been the only one working on this
+game for a while ;)
+
+2 Hours later...
+
+Oh my gosh finally figured out how to do the bare minimum of switching through
+scene instances for the action menu. So basically, I'm going to load each submenu
+(AttackMenu, MagicMenu, ItemMenu) into my ActionButtons object. ActionButtons 
+has a child node named ActionMenu which i hide whenever I switch to another menu.
+All of the submenus I mentioned earlier are hidden when they are added into the
+scene. Each submenu will start with a <- Back button that emits a signal to the
+AttackButtons object, that will hide the current submenu and bring back the 
+ActionMenu, the main menu. If it's confusing for you it certainly was confusing
+for me, It took me so long to figure out how to get that signal from the Back
+button to connect to the object, I just needed to be more specific with my
+get_node() method. You can see it in ActionButtons.gd. I haven't made another
+scene for magic and items, I'm hoping I can come up with a script that can make
+spawning the buttons easier to dynamically change your possible actions in the 
+game. Especially want to figure out a scroll bar thing for items.
+
+Make sure to have the text label for buttons show stats, unless that info is 
+moved in a different place later in development. I really want lunch.
+
+Came back from Qdoba feeling refreshed. Going to start work on item/magic scenes
+
+Hey I'm thinking the magic could look different from attack actions, it could
+have more of a grid like matrix with an icon for the spell and show mana cost.
+The items would look more like the attack actions, but I'm thinking skinnier
+button bars with an x6 showing how much of that item there is. Maybe not have
+an x1 but start at x2. I'm going to start item menu scene. 
+
+Status on item scene, I have a ItemMenu that will spawn Item scenes. Still need
+to work out how to edit the text on each button for each scene that I spawn, but
+the good news is I'm getting better at the control nodes for UI. The temp list
+spawned 10 items that look decent on a panel background. More impressively, I
+changed the buttons for ActionMenu to use v split and H split for the 4 buttons.
+Looking back, I could have used an h and vbox container, but it's whatever. 
+The buttons have min sizes and are centered in each corner with a nice margin 
+container preserving the edges. It may look rediculous in the node tree, but I
+got the hang of it. I have a nice grasp on GODOT control nodes for UI now. :)
+
+Going to start work on item button access....
+
+Item list spawn works. Had to fiddle for a while with margin containers, which 
+work a lot better than center containers. Also, I didn't use HSplits, Hboxes
+always seem to work better. Item menu has the panel and scroll container for 
+all the items in the list, but doesn't have any. The items are spawned in from
+the Item scene. A button with two labels, one label with the item name and 
+quantity. The other with a discription. Took a lot of fiddling to get the desc
+to be how I wanted it, shouldn't have started with a rich text box. Now the 
+tricky part I've been putting off, to get the signal from each button in the list
+so it will do stuff in the combat scene. I'm trying to go baby mode right now, 
+just have the first button '<- back' work to go back to actionMenu. Need probably
+a dictonary to feed to list creation so I have reference in combat scene, ugh. 
+
+Good news tho, list menu can dynamically grow thanks to a function in the list
+script. I did what I set out to do! But getting button signals will be annoying. 
+
+
+Yessss finally got it!! Now the back 'item' connects it's pressed signal to the
+"backToActionMenu" function I've already written, so it works fine! This node
+structure can get confusing when you're changing where objects are on the tree,
+especially in this case when I was 2 scripted objects in... my saving grace was
+this get_owner() method that brought me to the top Node2D of ItemMenu, then a
+step back and I was right in the script I needed to be. Awe yes! 
+
+Now I can either begin working on magicMenu, a dictionary for items,
+attack functionality, or a world map. I'm done for the day... I'll upload to
+GitHub and then enjoy some YouTube. Good Progress!!!
+
+
+
