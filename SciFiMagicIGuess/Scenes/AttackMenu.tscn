@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Fonts/ActionButton.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scripts/leaveBut.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Hide2DScene.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/MoveList.gd" type="Script" id=4]
 
 [node name="AttackMenu" type="Node2D"]
 script = ExtResource( 3 )
@@ -17,49 +18,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 margin_left = 30.0
 margin_top = 20.0
 margin_right = 760.0
 margin_bottom = 384.0
 
-[node name="testAttackBut1" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="MoveList" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+margin_right = 730.0
+margin_bottom = 364.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="leaveBut" type="Button" parent="MarginContainer/ScrollContainer/MoveList"]
 margin_right = 730.0
 margin_bottom = 80.0
-rect_min_size = Vector2( 0, 80 )
-custom_fonts/font = ExtResource( 1 )
-text = "   Sword [10-30]"
-align = 0
-
-[node name="testAttackBut2" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 84.0
-margin_right = 730.0
-margin_bottom = 164.0
-rect_min_size = Vector2( 0, 80 )
-custom_fonts/font = ExtResource( 1 )
-text = "   Dagger [5-20]"
-align = 0
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="testAttackBut3" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 168.0
-margin_right = 730.0
-margin_bottom = 248.0
-rect_min_size = Vector2( 0, 80 )
-custom_fonts/font = ExtResource( 1 )
-text = "   Fist [1-5]"
-align = 0
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="leaveBut" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 252.0
-margin_right = 730.0
-margin_bottom = 332.0
 rect_min_size = Vector2( 0, 80 )
 custom_fonts/font = ExtResource( 1 )
 text = "  <- Back"

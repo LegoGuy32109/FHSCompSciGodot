@@ -1,3 +1,118 @@
+2/27/2020 Thursday 5th period flex - Josh
+Club today! Hope they appreicate my progress.
+
+Improved health bars, animation loads then on combat intro. Damage dealt to them
+displays proportionally instead of just subtracting from 100. Animation can be
+skiped in textSkip() method so an attack can deal damage instantly. 
+
+Skill need to consider turn based functionality, considering a panel blocking
+input for player in ActionButtons panel saying "enemy attacking" while enemy
+attacks are calculated or randomized or whatever. 
+
+I'll upload latest version 7th period to github, haven't done a repository update
+for a while lol.
+
+Working on game reconizing an enemy is dead.
+
+Game reconizes enemy is dead. Health bar sends signal to AttackButtons saying an
+enemy died. Added text functions to edit text log more effectively.
+
+Fixed kicking the enemy while he's down, can't attack when enemy is dead. Just
+takes player back to actionMenu. Now have two global booleans introOver and
+skirmishOver to indicate the obvious. Working on intro music to wow club...
+
+
+
+2/26/2020 Wednesday CSA (I AM playing a game I coded!) - Josh
+Sent a screen recording through clickup of my custom texture progressbar, and 
+the test animation of it changing values. Looked a little choppy, could just be
+the duration or is it the step? IDK looking into it. I am also replacing the
+player HP and MP with the custom bar.
+
+Custom bar added for player HP and MP. Named the M mana after chris's suggestion
+could be magic tho. 
+
+
+2/25/2020 Tuesday PurdueClass (totally doing school work) - Josh
+Just added method textSkip() in ActionButtons so I don't have to repeat all that
+code. Not a big deal, but I am beginning to have concerns on having everything
+run through the ActionButtons node. Oh well... Too far along now.
+
+Going to start work on randomness for dealing damage, also:
+thinking about having each physical weapon as an item that you have the option
+of throwing at an enemy for a good chance at extra damage. A reason for doing it
+is that your weapon could have a hidden durability with a sign on the attack
+implying how much durability is left. I think that's cool, people would actually
+buy daggers for their increased accuracy. But throwing a sword and making the 
+mark would deal massive damage bro, yeah.
+
+Randomn Attack function works, when writing (damage) dealt, I wondered about an
+armour mechanic that would subtract a certain amount of damage from attacks. Both
+the player and enemies can wear armour, with certain items able to destroy it.
+Enough damage would destroy armour regardless.
+
+Going to try to have enemy health bar respond to damage. Need UI workaround for
+stats tab
+
+Added critical hit feature that prints when max damage on a weapon is reached
+Later at home I'm thinking about making my own custom progress bars that look 
+much cooler then the defaults.
+
+Sent out the call for more items and ideas in slack... hopefully they will answer
+
+Got a nice purplish looking progress bar in there, will probably have to change
+a lot of the textures to match the look of the game. I'm getting tired, think I
+will chill on da bed. Might come back later today, might not.
+
+
+2/24/20 Monday SmartPeriod - Josh
+Here we go
+
+Script on each attack button not connects a signal when pressed to function in
+ActionButtons, and! it transmit's it's own name. That means I can transmit my the
+button object or anything I want in the button. Now the game knows which Attack
+button you hit which is huge! Going to experiment with having dictonary spawn
+attack buttons. 
+
+Attempted uisng Godot Resources, very confusing. Kind of like a class in Java but
+needs a script to interpret it I thing, usually used for much more complex data
+structures. I think a dictonary with a key: moveName and an array with 2 values
+minDamage and maxDamage.
+
+just figured out how to run addMove method from AttackMenu script, good progress
+
+Now I add attackMoves through ActionButtons script, still use function in 
+MoveList so that script is still important. Going to make when you attack pop up
+what you attacked on the log.
+
+Moving to another quadrant!!
+
+Log text is working nice. When an attack button is clicked, the log prints "Sir
+John used his [attackname(item)]!" and then a new line is used for each. Glad that
+\n works. Going to help friend with Calc, so bye lol
+
+
+
+2/23/20 Sunday Afternoon - Josh
+A new day awaits
+
+Just added scroll container in attackMenu and an AttackMove scene that is just
+the button. Have a method in MoveList script that adds attacks now, probably 
+will work with a move dictonary like the dict planned for items. 
+
+Showed my screenshots with some friends, not terribly interested. At least not 
+yet. >:) 
+
+Going to begin work on...
+Attack functionality, why not. Guess a dictonary needs to be put in now lol
+
+Realized that I need to do other homework. Will come back to it, MoveList still
+needs some work. Can't correctly connect signal 'pressed' for the attack move
+with another function that can get me the properties of the button, like it's
+name. Ugh.
+ 
+
+
 2/22/20 Saturday Morning - Josh
 Decided to make a dev log to track my thoughts, the game is getting big enough
 that I think having notes would be handy. 
@@ -86,7 +201,6 @@ a dictonary to feed to list creation so I have reference in combat scene, ugh.
 
 Good news tho, list menu can dynamically grow thanks to a function in the list
 script. I did what I set out to do! But getting button signals will be annoying. 
-
 
 Yessss finally got it!! Now the back 'item' connects it's pressed signal to the
 "backToActionMenu" function I've already written, so it works fine! This node

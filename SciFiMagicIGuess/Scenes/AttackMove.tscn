@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Fonts/ActionButton.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/AttackMove.gd" type="Script" id=2]
+
+[node name="AttackMove" type="Button"]
+margin_left = -1.10803
+margin_right = 728.892
+margin_bottom = 80.0
+rect_min_size = Vector2( 0, 80 )
+custom_fonts/font = ExtResource( 1 )
+text = "  Test Move [??-??]"
+align = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/SpriteArt/GameTempground.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Fonts/ActionButton.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scripts/Button.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Fonts/TimeburnerBold-peGR.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Scripts/Animations/FlightyTitle.anim" type="Animation" id=5]
+[ext_resource path="res://Assets/Music/TestTitleSong.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -65,3 +66,8 @@ percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TitleTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 3.114
+autoplay = true

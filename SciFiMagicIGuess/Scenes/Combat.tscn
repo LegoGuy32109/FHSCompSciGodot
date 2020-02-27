@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Assets/Fonts/ActionButton.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/CharacterStatTitle.tres" type="DynamicFont" id=2]
@@ -9,7 +9,12 @@
 [ext_resource path="res://Assets/SpriteArt/SirJohnSprite.png" type="Texture" id=7]
 [ext_resource path="res://Scripts/Animations/TextCrawl.anim" type="Animation" id=8]
 [ext_resource path="res://Scripts/Button.gd" type="Script" id=9]
+[ext_resource path="res://Assets/SpriteArt/FrontBar.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/ActionButtons.gd" type="Script" id=11]
+[ext_resource path="res://Assets/SpriteArt/WhiteBar.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/Animations/BattleStart.tres" type="Animation" id=13]
+[ext_resource path="res://Scenes/EnemyHealth.gd" type="Script" id=14]
+[ext_resource path="res://Assets/Music/BattleTestTheme.wav" type="AudioStream" id=15]
 
 [node name="Combat" type="Node2D"]
 
@@ -28,6 +33,15 @@ autoplay = "LogTextIntro"
 method_call_mode = 1
 anims/LogTextIntro = ExtResource( 8 )
 
+[node name="TextBack" type="Panel" parent="Log"]
+modulate = Color( 0.741176, 0.8, 0.670588, 1 )
+margin_left = 16.0
+margin_right = 790.0
+margin_bottom = 496.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TextLog" type="RichTextLabel" parent="Log"]
 margin_left = 16.0
 margin_top = 16.0
@@ -35,25 +49,17 @@ margin_right = 784.0
 margin_bottom = 496.0
 custom_fonts/normal_font = ExtResource( 4 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
-visible_characters = 0
-percent_visible = 0.0
 meta_underlined = false
 text = "Your party has been attacked by a Goblin!!
-The Goblin strikes Sir John!
-Sir John takes 5 damage!
-Sir John is now paralized!
-Sir John cast magic torpedo dealing 15 damage!
-The Goblin attacks Sir John!
-CRITICAL HIT!!!
-Sir John takes 20 damage!
-Sir John tries to attack and fails miserably! What a loser! This Guy Sucks!"
+It giggles with malice...
+============================================="
+scroll_following = true
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Stats" type="Panel" parent="."]
-modulate = Color( 0.568627, 1, 1, 1 )
 margin_top = 512.0
 margin_right = 800.0
 margin_bottom = 896.0
@@ -62,161 +68,248 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerBack" type="ColorRect" parent="Stats"]
-modulate = Color( 0.384314, 0.439216, 0.458824, 1 )
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 480.0
-margin_bottom = 96.0
+[node name="Panel" type="Panel" parent="Stats"]
+modulate = Color( 0.619608, 0.831373, 1, 1 )
+margin_right = 800.0
+margin_bottom = 384.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerTitle" type="Label" parent="Stats/PlayerBack"]
+[node name="MarginContainer" type="MarginContainer" parent="Stats"]
+margin_right = 800.0
+margin_bottom = 384.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 20
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Stats/MarginContainer"]
+margin_left = 10.0
+margin_top = 20.0
+margin_right = 790.0
+margin_bottom = 364.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Stats/MarginContainer/HBoxContainer2"]
+margin_right = 470.0
+margin_bottom = 344.0
+custom_constants/margin_right = 10
+custom_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer"]
+margin_left = 10.0
+margin_right = 460.0
+margin_bottom = 344.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+margin_right = 450.0
+margin_bottom = 65.0
+size_flags_horizontal = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerBack" type="ColorRect" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer/CenterContainer"]
+modulate = Color( 0.384314, 0.439216, 0.458824, 1 )
+margin_right = 450.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 450, 65 )
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerTitle" type="Label" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer/CenterContainer"]
 modulate = Color( 0.109804, 0.211765, 0.611765, 1 )
-margin_right = 448.0
-margin_bottom = 64.0
+margin_left = 15.0
+margin_top = 3.0
+margin_right = 435.0
+margin_bottom = 61.0
 custom_fonts/font = ExtResource( 2 )
 text = "The \"Illustriuous\" Sir John"
 align = 1
 valign = 1
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="EnemyBack" type="ColorRect" parent="Stats"]
-modulate = Color( 0.298039, 0.458824, 0.290196, 1 )
-margin_left = 512.0
-margin_top = 32.0
-margin_right = 768.0
-margin_bottom = 96.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer"]
+margin_top = 69.0
+margin_right = 450.0
+margin_bottom = 344.0
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 223.0
+margin_bottom = 275.0
+size_flags_horizontal = 3
+color = Color( 1, 1, 1, 0.960784 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EnemyTitle" type="Label" parent="Stats/EnemyBack"]
-modulate = Color( 0.109804, 0.211765, 0.611765, 1 )
-margin_right = 256.0
-margin_bottom = 64.0
+[node name="PlayerIcon" type="Sprite" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer/ColorRect"]
+position = Vector2( 105.733, 120 )
+scale = Vector2( 0.168114, 0.201316 )
+texture = ExtResource( 7 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 227.0
+margin_right = 450.0
+margin_bottom = 275.0
+size_flags_horizontal = 3
+
+[node name="HPStat" type="Label" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 223.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 3 )
+text = "HP 50 / 50"
+align = 1
+valign = 1
+
+[node name="PlayerHealth" type="TextureProgress" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HPStat"]
+margin_top = 38.0
+margin_right = 223.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_vertical = 0
+step = 0.01
+texture_under = ExtResource( 12 )
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 12 )
+tint_under = Color( 0.368627, 0.282353, 0.45098, 1 )
+tint_over = Color( 0.513726, 0.529412, 0.639216, 1 )
+tint_progress = Color( 0.113725, 0.807843, 0.121569, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 38.0
+margin_right = 223.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 0, 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MPStat" type="Label" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 223.0
+margin_bottom = 116.0
+custom_fonts/font = ExtResource( 3 )
+text = "MP 20 / 20"
+align = 1
+valign = 1
+
+[node name="PlayerMana" type="TextureProgress" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MPStat"]
+margin_top = 38.0
+margin_right = 223.0
+margin_bottom = 78.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_vertical = 0
+step = 0.01
+texture_under = ExtResource( 12 )
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 12 )
+tint_under = Color( 0.368627, 0.282353, 0.45098, 1 )
+tint_over = Color( 0.513726, 0.529412, 0.639216, 1 )
+tint_progress = Color( 0.117647, 0.764706, 0.890196, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="Stats/MarginContainer/HBoxContainer2"]
+margin_left = 474.0
+margin_right = 774.0
+margin_bottom = 344.0
+custom_constants/margin_right = 10
+custom_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2"]
+margin_left = 10.0
+margin_right = 290.0
+margin_bottom = 344.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/VBoxContainer"]
+margin_right = 280.0
+margin_bottom = 65.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyBack" type="ColorRect" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/VBoxContainer/CenterContainer"]
+modulate = Color( 0.298039, 0.458824, 0.290196, 1 )
+margin_right = 280.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 280, 65 )
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyTitle" type="Label" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/VBoxContainer/CenterContainer"]
+modulate = Color( 0.0352941, 0.235294, 0.027451, 1 )
+margin_left = 82.0
+margin_top = 3.0
+margin_right = 198.0
+margin_bottom = 61.0
 custom_fonts/font = ExtResource( 2 )
 text = "Goblin"
 align = 1
 valign = 1
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerHealthRect" type="ColorRect" parent="Stats"]
-margin_left = 256.0
-margin_top = 128.0
-margin_right = 416.0
-margin_bottom = 160.0
-color = Color( 0.85098, 0.2, 0.2, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlayerHealth" type="ProgressBar" parent="Stats/PlayerHealthRect"]
-margin_left = -16.0
-margin_top = 32.0
-margin_right = 208.0
-margin_bottom = 64.0
-value = 90.0
-rounded = true
-allow_greater = true
-percent_visible = false
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="PHealthText" type="Label" parent="Stats/PlayerHealthRect"]
-margin_right = 160.0
-margin_bottom = 34.0
+[node name="EnemyHPStat" type="Label" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/VBoxContainer"]
+margin_top = 69.0
+margin_right = 280.0
+margin_bottom = 103.0
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "HP:    48/50"
+text = "HP 30 / 30"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="EnemyHealthRect" type="ColorRect" parent="Stats"]
-margin_left = 560.0
-margin_top = 128.0
-margin_right = 720.0
-margin_bottom = 160.0
-color = Color( 0.85098, 0.2, 0.2, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EnemyHealth" type="ProgressBar" parent="Stats/EnemyHealthRect"]
-margin_left = -32.0
-margin_top = 32.0
-margin_right = 192.0
-margin_bottom = 64.0
-value = 40.0
-rounded = true
-allow_greater = true
-percent_visible = false
+[node name="EnemyHealth" type="TextureProgress" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/VBoxContainer/EnemyHPStat"]
+margin_top = 38.0
+margin_right = 280.0
+margin_bottom = 118.0
+rect_min_size = Vector2( 0, 80 )
+step = 0.01
+texture_under = ExtResource( 12 )
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 12 )
+tint_under = Color( 0.368627, 0.282353, 0.45098, 1 )
+tint_over = Color( 0.513726, 0.529412, 0.639216, 1 )
+tint_progress = Color( 0.113725, 0.807843, 0.121569, 1 )
+nine_patch_stretch = true
+stretch_margin_top = 46
+stretch_margin_bottom = 32
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_lock_": true,
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
-[node name="EHealthText" type="Label" parent="Stats/EnemyHealthRect"]
-margin_right = 160.0
-margin_bottom = 34.0
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "HP:    10/25"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlayerMagicRect" type="ColorRect" parent="Stats"]
-margin_left = 256.0
-margin_top = 224.0
-margin_right = 368.0
-margin_bottom = 256.0
-color = Color( 0.196078, 0.521569, 0.545098, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MagicText" type="Label" parent="Stats/PlayerMagicRect"]
-margin_right = 112.0
-margin_bottom = 34.0
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "MP: 10/15"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlayerMagic" type="ProgressBar" parent="Stats/PlayerMagicRect"]
-margin_left = -16.0
-margin_top = 32.0
-margin_right = 208.0
-margin_bottom = 64.0
-value = 70.0
-rounded = true
-allow_greater = true
-percent_visible = false
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/VBoxContainer"]
+autoplay = "BattleStart"
+anims/BattleStart = ExtResource( 13 )
 
 [node name="Actions" type="Panel" parent="."]
 modulate = Color( 1, 0.72549, 0.403922, 0.662745 )
@@ -365,21 +458,6 @@ __meta__ = {
 }
 nextScene = "res://Scenes/Title.tscn"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 8.36038
-margin_top = 629.0
-margin_right = 237.36
-margin_bottom = 871.0
-color = Color( 0.87451, 0.87451, 0.87451, 0.960784 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlayerIcon" type="Sprite" parent="ColorRect"]
-position = Vector2( 107.491, 120.842 )
-scale = Vector2( 0.168114, 0.201316 )
-texture = ExtResource( 7 )
-
 [node name="BackGround" type="Sprite" parent="."]
 modulate = Color( 0.909804, 0.823529, 0.823529, 1 )
 position = Vector2( 400, 256 )
@@ -396,5 +474,10 @@ texture = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="BattleTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -4.359
+autoplay = true
 [connection signal="pressed" from="Actions/ActionButtons/ActionMenu/MarginContainer/VSplitContainer/HSplitContainer/CenterContainer/AttackBut" to="Actions/ActionButtons" method="attackButtonWasPressed"]
 [connection signal="pressed" from="Actions/ActionButtons/ActionMenu/MarginContainer/VSplitContainer/HSplitContainer2/CenterContainer/ItemsBut" to="Actions/ActionButtons" method="itemsButtonWasPressed"]
