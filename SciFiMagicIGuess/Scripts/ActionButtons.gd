@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var actionMenu = get_node("ActionMenu")
-
+onready var blockPlayer = get_parent().get_node("BlockPlayer")
 const AttackMenuScene = preload("res://Scenes/AttackMenu.tscn")
 var attackMenu
 
@@ -10,13 +10,19 @@ var itemMenu
 
 onready var textLog = get_owner().get_node("Log/TextLog")
 
-onready var enemyHP = get_owner().get_node("Stats/MarginContainer/HBoxContainer2/MarginContainer2/VBoxContainer/EnemyHPStat/EnemyHealth")
-onready var playerHP = get_owner().get_node("Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/HPStat/PlayerHealth")
-onready var playerMP = get_owner().get_node("Stats/MarginContainer/HBoxContainer2/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MPStat/PlayerMana")
+#Possibly going to need enemy party container like below
+onready var enemyHP = get_owner().find_node("EnemyHealth")
+
+#Variables for magic and life bars of player party
+onready var partyContainer = get_owner().find_node("PartyContainer")
+
+#onready var playerHP = partyContainer.get_node("PartyMember/PartyMemberStats/VBoxContainer3/HBoxContainer/VBoxContainer/Health")
+#onready var playerMP = partyContainer.get_node("PartyMember/PartyMemberStats/VBoxContainer3/HBoxContainer/VBoxContainer2/Magic")
 
 var r = RandomNumberGenerator.new()
 var attackDict = {}
-
+#Temp for testing purposes
+var enemyAttackDict = {"Sharp Metal":[0,4]}
 #Used for no repition of textSkip
 var introOver = false
 var skirmishOver = false
@@ -28,7 +34,7 @@ func _ready():
 	attackMenu = get_node("AttackMenu")
 	#Scene hides when it enters
 	#Ugh... I had to go through all the control nodes to reach the actual button
-	attackMenu.get_node("MarginContainer/ScrollContainer/MoveList/leaveBut").connect("leftAttackMenu", self, "backToActionMenu")
+	attackMenu.find_node("leaveBut").connect("leftAttackMenu", self, "backToActionMenu")
 	
 	add_child(ItemMenuScene.instance())
 	itemMenu = get_node("ItemMenu")
@@ -44,7 +50,7 @@ func _ready():
 #	print(attackDict)
 	
 	#Figured out how to add attack moves through a dictonary
-	var moveList = attackMenu.get_node("MarginContainer/ScrollContainer/MoveList")
+	var moveList = attackMenu.find_node("MoveList")
 	for itemName in attackDict:
 		moveList.addMove(itemName,attackDict[itemName][0],attackDict[itemName][1])
 	
@@ -54,9 +60,9 @@ func backToActionMenu():
 	get_node("ActionMenu").show()
 
 #Function for finding damage value from the min and max in the attackDictonary
-func findAttack(attackName):
-	var attackMin = attackDict[attackName][0]
-	var attackMax = attackDict[attackName][1]
+func findAttack(attackName,dict):
+	var attackMin = dict[attackName][0]
+	var attackMax = dict[attackName][1]
 	#Safety precaution
 	if(attackMin > attackMax):
 		var temp = attackMin
@@ -65,6 +71,20 @@ func findAttack(attackName):
 	var damage = r.randi_range(attackMin,attackMax)
 #	print(damage)
 	return damage
+
+func findEnemyAttack():
+	r.randomize()
+	#Choose attack
+	var attackName = "Sharp Metal"
+	#Chose which character to attack
+	var charIndex = r.randi_range(0,( len( partyContainer.get_children() )-1 ))
+	#Char attacked is a marginContainer
+	var charAttacked = partyContainer.get_child(charIndex)
+	#Find damage in neutral findAttack method
+	var damage = findAttack(attackName,enemyAttackDict)
+	charAttacked.find_node("Health").dealDamage(damage)
+	tl("Scraplin used "+str(attackName)+" dealing "+str(damage)+" to "+str(charAttacked.find_node("Name").text))
+	pass
 	
 #Easier for new output of text log
 func tl(out):
@@ -74,11 +94,13 @@ func t(out):
 	textLog.text += " "+out
 	pass
 	
+
 #Func called when attack button is pressed
 func attackWasPressed(attackName):
 #	print(str(attackDict[attackName][0])+" - "+str(attackDict[attackName][1]))
 	if not skirmishOver:
-		var damage = findAttack(attackName)
+		var damage = findAttack(attackName,attackDict)
+		tl("== Player Turn ==")
 		tl("Sir John used his "+str(attackName)+"!")
 		tl("Dealt "+str(damage)+" damage!")
 		if(damage==attackDict[attackName][1]):
@@ -87,14 +109,30 @@ func attackWasPressed(attackName):
 		#Subtracting enemy health
 		
 		enemyHP.dealDamage(damage)
-	
+		if enemyHP.value > 0:
+			#Stop control
+			blockPlayer.visible = true
+			#yield enemy took damage/doged
+			tl("-- Enemy Turn --")
+			#Enemy move
+			#yield enemy attack anim - may fit in findEnemyAttack
+			#can fit in weapon through param later v
+			var enemyDamage = findEnemyAttack()
+			#yield character anim had damage dealt - may be in their Health dealDamage method
+			#Give back control
+		blockPlayer.visible = false
+		
+		
+		
 	backToActionMenu()
 
 #Enemy has died function
 func enemyDied():
 	#Randomize more death display options
-	tl("The Goblin was vanquished!")
+	tl("The Scraplin was vanquished!")
 	tl("Let's get this bread XD")
+	get_node("BattleTheme").stop()
+	get_node("VictoryMusic").play()
 	skirmishOver = true
 
 #Function to skip text log and intro animations
@@ -102,10 +140,15 @@ func textSkip():
 	if not introOver:
 		textLog.get_parent().get_child(0).stop()
 		textLog.percent_visible = 1
-		enemyHP.get_parent().get_parent().get_node("AnimationPlayer").stop()
+		enemyHP.get_parent().get_parent().get_node("EnemyAnimator").stop()
 		enemyHP.value = 100;
-		playerHP.value = 100;
-		playerMP.value = 100;
+		# GENIUS
+		for player in partyContainer.get_children():
+			#Not sure how to specify 'PartyMember' type but this works for now
+			if player is MarginContainer:
+				player.find_node("CharAnimator").stop()
+				player.find_node("Health").value = 100;
+				player.find_node("Magic").value = 100;
 		
 		introOver = true
 	

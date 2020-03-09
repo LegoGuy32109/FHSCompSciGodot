@@ -1,3 +1,129 @@
+3/9/2020 Finished some YouTube - Josh
+Keep forgetting to write DevLogs. Not much has changed, test party now has
+profiles of 3 John faces. With their titles edited too. Working on enemy attack
+functionality, close to an actual game! Currently thinking we will need multiple
+animation players for enemy hurt animation, enemy attack animation(s) maybe an
+AnimationTreePlayer or node like that would help? Not sure so far. 
+
+Right now, working on having the enemy deal damage to a character. 
+
+Alright, now the functionality is put in to stop players from attacking enemies
+while in animation. Noticed Goblin can still attack when he's dead, will fix that.
+
+Animations need to exist so you can actually see the Enemy Turn panel. 
+
+Work on victory theme and researching managing multiple animation players...
+
+Victory theme implemented and updataed player turn input. Going to publish to
+GitHub because I said I would in slack.
+Research next,
+
+
+
+3/7/2020 10:19? - Josh
+I had to move 2 different houses today. I feel alright, but it took all day. Ugh.
+I really wanted to work on this, but it's so late. Oh well. I got Spotify.
+
+Yeah I can't do this. Too tired. 
+
+I got pics uploaded tho. Can't figure out in Godot how to spot a specific reigon
+of a PNG. So I made PNG's of each of the faces. Probably something I need to 
+say in club. "Hey upload every thing individually as a PNG pls and thank." Hey I
+did what I couldn't do earlier so that's something.
+
+Man I wish we can do this game.
+
+
+
+3/5/2020 SMART Peiod, actually doing something - Josh
+Just fixed nodepath complication. Moral of story, copy from scene instead of
+trying to type it yourself. Also, I've heard about these things called
+singletons, act as loaded data that every scene can access. GODOT's global vars, 
+but still a little confusing, not sure if there is script to enable singletons,
+seems to be each object has to be connected manually in editor rather through 
+code. So that could be a solution, it might not, 
+
+I'm going to continue on script
+to have more party members spawn when the combat scene starts. Would like to have
+a cool animation and I've heard in unity tweening is the best way to go, don't
+know if that's possible in GODOT yet.
+
+Good news! find_node() method only requires the name of the node to find it!
+It doesn't need the whole path, was worried this would cause lag during run time
+and initially it did appear so when starting the game from the combat scene. 
+Anims also run weird, but that problem doesn't occur when entering the scene from 
+the title scene. Title scene can act as a load buffer, so players won't notice! 
+Unless they're speed runners then that's their problem.
+
+Node paths no longer a problem!
+Can change control nodes around ui elements and they'll still find them! Oh that
+is so great I have to keep mentioning it. Going to work on importing Dylan's
+faces for Sir John.
+
+Actually I had the animation players for every party member stop playing through
+a for each type loop. So genius, so proud, it works so well and looks so nice.
+NOW I will work on importing lol.
+
+Still haven't imported Dylan's things.
+
+
+
+
+
+3/3/2020 4th Period Marketing - Josh
+I thought I would have a lot of time today with the bloated SMART to get more
+work done, but I actually spent all that time reading the D&D monster manual.
+Lot's of really interesting stuff in there for world building and other things.
+Trying to see what can be applied to our game, but a lot of it is too Fantasy and
+not SciFi enough, there's good magic stuff for Golems. Really interested in this
+one creature that's constructed of marble and copper and can burst from pillars
+as defense guards. I think that's really cool.
+
+Alright not gonna lie, I've been slackin. But I'm going to start working now even
+if it's 8:38 I'll still get something done gamers.
+
+Rewriting node paths isn't as hard as I thought, added the partyContainer variable
+to shorten some node paths. Animation player renamed StatAnimator. Can use attack
+functionality and enemyHP reponds correctly. Going to try to summon more party
+members using party member object probably with new faces Dylan added. Just
+remembered that the current design doesn't have a name of the character, ugh.
+
+Might have spoken too soon about nodepaths, having issues reconnecting the bars
+after adding label for character. Looks nice in my opinion. Would be really nice
+if some script could emit the object to the PartyContainer making it easier to
+grab in my ActionButtons.gd that's turning into my game manager.
+
+
+
+3/2/2020 Monday Morning in CSA - Josh
+Just changed PartyMember scene to include character's portrait. Working on script
+in Party container to add more instances of those scenes and change portrait and
+values and such. Finally fixing node issues with the remodeled stats quadrant in
+combat. Might finally be able to click the action button soon haha.
+
+Was in the process of doing that, I have not finished yet. :(
+
+
+
+3/1/2020 Sunday Afternoon - Josh
+It's been a while...
+
+I forgot I have homework to do for Technical Graphics, ugh.
+Finished it but I have less than 30 min to work on somethin. Guess i'll still
+hammer out party member blocks.
+
+Instance scenes stack better, got rid of party title. Gotta go to practice, but 
+good progress for 30 min :)
+
+
+
+2/28/2020 Friday ??? - Josh
+I think all I did was work on scene for new party members. Because of that the
+game doesn't work right now, the node paths are incorrect in the scripts. Working
+on that soon. I'm writing this Sunday afternoon.
+
+
+
 2/27/2020 Thursday 5th period flex - Josh
 Club today! Hope they appreicate my progress.
 
@@ -21,6 +147,10 @@ Fixed kicking the enemy while he's down, can't attack when enemy is dead. Just
 takes player back to actionMenu. Now have two global booleans introOver and
 skirmishOver to indicate the obvious. Working on intro music to wow club...
 
+Updated Repository. Have test intro and battle music themes, also the
+audacity projects are in GODOT too. Whoops.
+
+
 
 
 2/26/2020 Wednesday CSA (I AM playing a game I coded!) - Josh
@@ -31,6 +161,8 @@ player HP and MP with the custom bar.
 
 Custom bar added for player HP and MP. Named the M mana after chris's suggestion
 could be magic tho. 
+
+
 
 
 2/25/2020 Tuesday PurdueClass (totally doing school work) - Josh
@@ -63,6 +195,8 @@ Sent out the call for more items and ideas in slack... hopefully they will answe
 Got a nice purplish looking progress bar in there, will probably have to change
 a lot of the textures to match the look of the game. I'm getting tired, think I
 will chill on da bed. Might come back later today, might not.
+
+
 
 
 2/24/20 Monday SmartPeriod - Josh
@@ -111,6 +245,7 @@ needs some work. Can't correctly connect signal 'pressed' for the attack move
 with another function that can get me the properties of the button, like it's
 name. Ugh.
  
+
 
 
 2/22/20 Saturday Morning - Josh
