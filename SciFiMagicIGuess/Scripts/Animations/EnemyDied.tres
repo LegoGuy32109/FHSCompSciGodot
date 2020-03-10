@@ -1,0 +1,29 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "EnemyDied"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../../../../BackGround/Enemy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.982101, 0.891327, 0.891327, 1 ), Color( 0.980392, 0.890196, 0.890196, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../../../../BackGround/Enemy:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0468651, 0.0998429, 0.148746, 0.193573, 0.2384, 0.283228, 0.336206, 0.389184, 0.436049, 0.489027, 0.537929, 0.582757, 0.627584, 0.672412, 0.72539, 0.77633, 0.823195, 0.876173, 0.925075, 0.969903, 1.01473, 1.05956, 1.11254, 1.15329, 1.20015, 1.25313, 1.30203, 1.34686, 1.39169, 1.43652, 1.48949, 1.52821, 1.57507, 1.62805, 1.67695, 1.72178, 1.76661, 1.81144, 1.86441 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 29.2171, -0.83376 ), Vector2( -46.9027, 27.9413 ), Vector2( 68.5047, -67.0164 ), Vector2( 48.8609, 88.3689 ), Vector2( -78.8238, -9.46632 ), Vector2( 43.95, 50.9613 ), Vector2( -100.923, 7.79869 ), Vector2( -34.6252, -0.833878 ), Vector2( 29.2171, -0.83376 ), Vector2( -46.9027, 27.9413 ), Vector2( 68.5047, -67.0164 ), Vector2( 48.8609, 88.3689 ), Vector2( -78.8238, -9.46632 ), Vector2( 43.95, 50.9613 ), Vector2( -100.923, 7.79869 ), Vector2( -34.6252, -0.833878 ), Vector2( 29.2171, -0.83376 ), Vector2( -46.9027, 27.9413 ), Vector2( 68.5047, -67.0164 ), Vector2( 48.8609, 88.3689 ), Vector2( -78.8238, -9.46632 ), Vector2( 43.95, 50.9613 ), Vector2( -100.923, 7.79869 ), Vector2( -34.6252, -0.833878 ), Vector2( 29.2171, -0.83376 ), Vector2( -46.9027, 27.9413 ), Vector2( 68.5047, -67.0164 ), Vector2( 48.8609, 88.3689 ), Vector2( -78.8238, -9.46632 ), Vector2( 43.95, 50.9613 ), Vector2( -100.923, 7.79869 ), Vector2( -34.6252, -0.833878 ), Vector2( 29.2171, -0.83376 ), Vector2( -46.9027, 27.9413 ), Vector2( 68.5047, -67.0164 ), Vector2( 48.8609, 88.3689 ), Vector2( -78.8238, -9.46632 ), Vector2( 43.95, 50.9613 ), Vector2( -100.923, 7.79869 ), Vector2( -34.6252, -0.833878 ) ]
+}

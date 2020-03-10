@@ -1,3 +1,21 @@
+3/10/2020 Enlongated Smart - Josh
+Haven't researched animation players. I'll do that now.
+
+Awesome! Now I have the enemyPlayer animate their attack from the same animator
+of the enemy stats. Epic. Also if you clicked fast enough, the player could deal
+damage before the enemy could respond, so that's fixed. I have the enemy turn 
+panel disapear in the findEnemyAttack method, which fixed that problem.
+
+Now I could start drawing an actual scraplin, or make an animation for the
+enemy taking damage. Decisions decisions...
+
+Make an animation. For damage and death. Programming wise it isn't that hard to 
+put it inwhen you make the animation. They aren't perfect, but they're a great 
+proof if concept. I've made this edit in the Desktop GitHub cloned repository, so
+I hope it works when I upload it. 
+
+
+
 3/9/2020 Finished some YouTube - Josh
 Keep forgetting to write DevLogs. Not much has changed, test party now has
 profiles of 3 John faces. With their titles edited too. Working on enemy attack

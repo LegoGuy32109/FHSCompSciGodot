@@ -16,8 +16,7 @@ onready var enemyHP = get_owner().find_node("EnemyHealth")
 #Variables for magic and life bars of player party
 onready var partyContainer = get_owner().find_node("PartyContainer")
 
-#onready var playerHP = partyContainer.get_node("PartyMember/PartyMemberStats/VBoxContainer3/HBoxContainer/VBoxContainer/Health")
-#onready var playerMP = partyContainer.get_node("PartyMember/PartyMemberStats/VBoxContainer3/HBoxContainer/VBoxContainer2/Magic")
+onready var enemyPlayer = get_owner().find_node("EnemyAnimator")
 
 var r = RandomNumberGenerator.new()
 var attackDict = {}
@@ -81,10 +80,13 @@ func findEnemyAttack():
 	#Char attacked is a marginContainer
 	var charAttacked = partyContainer.get_child(charIndex)
 	#Find damage in neutral findAttack method
+	enemyPlayer.play("EnemyAttack")
+	yield(enemyPlayer,"animation_finished")
+	
 	var damage = findAttack(attackName,enemyAttackDict)
 	charAttacked.find_node("Health").dealDamage(damage)
 	tl("Scraplin used "+str(attackName)+" dealing "+str(damage)+" to "+str(charAttacked.find_node("Name").text))
-	pass
+	blockPlayer.visible = false
 	
 #Easier for new output of text log
 func tl(out):
@@ -113,6 +115,8 @@ func attackWasPressed(attackName):
 			#Stop control
 			blockPlayer.visible = true
 			#yield enemy took damage/doged
+			enemyPlayer.play("EnemyHurt")
+			yield(enemyPlayer,"animation_finished")
 			tl("-- Enemy Turn --")
 			#Enemy move
 			#yield enemy attack anim - may fit in findEnemyAttack
@@ -120,7 +124,7 @@ func attackWasPressed(attackName):
 			var enemyDamage = findEnemyAttack()
 			#yield character anim had damage dealt - may be in their Health dealDamage method
 			#Give back control
-		blockPlayer.visible = false
+			#blockPlayer.visible = false
 		
 		
 		
@@ -129,6 +133,7 @@ func attackWasPressed(attackName):
 #Enemy has died function
 func enemyDied():
 	#Randomize more death display options
+	enemyPlayer.play("EnemyDied")
 	tl("The Scraplin was vanquished!")
 	tl("Let's get this bread XD")
 	get_node("BattleTheme").stop()

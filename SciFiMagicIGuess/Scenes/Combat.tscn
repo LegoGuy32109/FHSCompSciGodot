@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/Fonts/ActionButton.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/CharacterStatTitle.tres" type="DynamicFont" id=2]
@@ -17,6 +17,9 @@
 [ext_resource path="res://Assets/Music/BattleTestTheme.wav" type="AudioStream" id=15]
 [ext_resource path="res://Scripts/PartyContainer.gd" type="Script" id=16]
 [ext_resource path="res://Assets/Music/TestVictoryMusic.wav" type="AudioStream" id=17]
+[ext_resource path="res://Scripts/Animations/EnemyAttack.tres" type="Animation" id=18]
+[ext_resource path="res://Scripts/Animations/EnemyHurt.tres" type="Animation" id=19]
+[ext_resource path="res://Scripts/Animations/EnemyDied.tres" type="Animation" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 75
@@ -27,6 +30,9 @@ extra_spacing_char = 4
 font_data = ExtResource( 7 )
 
 [node name="Combat" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ 31.0905 ]
+}
 
 [node name="Log" type="Panel" parent="."]
 modulate = Color( 0.572549, 0.811765, 0.521569, 0.666667 )
@@ -60,6 +66,8 @@ margin_right = 784.0
 margin_bottom = 496.0
 custom_fonts/normal_font = ExtResource( 4 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
+visible_characters = 0
+percent_visible = 0.0
 meta_underlined = false
 text = "Your party has been attacked by a Scraplin!!
 It giggles with malice...
@@ -198,6 +206,9 @@ __meta__ = {
 [node name="EnemyAnimator" type="AnimationPlayer" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/EnemyContainer"]
 autoplay = "BattleStart"
 anims/BattleStart = ExtResource( 13 )
+anims/EnemyAttack = ExtResource( 18 )
+anims/EnemyDied = ExtResource( 20 )
+anims/EnemyHurt = ExtResource( 19 )
 
 [node name="Actions" type="Panel" parent="."]
 modulate = Color( 1, 0.72549, 0.403922, 0.662745 )
@@ -348,6 +359,7 @@ nextScene = "res://Scenes/Title.tscn"
 
 [node name="VictoryMusic" type="AudioStreamPlayer" parent="Actions/ActionButtons"]
 stream = ExtResource( 17 )
+volume_db = -4.039
 
 [node name="BattleTheme" type="AudioStreamPlayer" parent="Actions/ActionButtons"]
 stream = ExtResource( 15 )
@@ -396,11 +408,9 @@ __meta__ = {
 }
 
 [node name="Enemy" type="Sprite" parent="BackGround"]
-position = Vector2( 29.136, -1 )
-scale = Vector2( 0.807534, 0.96135 )
+modulate = Color( 0.982101, 0.891327, 0.891327, 1 )
+position = Vector2( 29.2171, -0.83376 )
+scale = Vector2( 0.807534, 0.944552 )
 texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
 [connection signal="pressed" from="Actions/ActionButtons/ActionMenu/MarginContainer/VSplitContainer/HSplitContainer/CenterContainer/AttackBut" to="Actions/ActionButtons" method="attackButtonWasPressed"]
 [connection signal="pressed" from="Actions/ActionButtons/ActionMenu/MarginContainer/VSplitContainer/HSplitContainer2/CenterContainer/ItemsBut" to="Actions/ActionButtons" method="itemsButtonWasPressed"]
