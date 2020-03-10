@@ -408,9 +408,11 @@ __meta__ = {
 }
 
 [node name="Enemy" type="Sprite" parent="BackGround"]
-modulate = Color( 0.982101, 0.891327, 0.891327, 1 )
-position = Vector2( 29.2171, -0.83376 )
-scale = Vector2( 0.807534, 0.944552 )
+position = Vector2( 29.136, -1 )
+scale = Vector2( 0.807534, 0.96135 )
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 [connection signal="pressed" from="Actions/ActionButtons/ActionMenu/MarginContainer/VSplitContainer/HSplitContainer/CenterContainer/AttackBut" to="Actions/ActionButtons" method="attackButtonWasPressed"]
 [connection signal="pressed" from="Actions/ActionButtons/ActionMenu/MarginContainer/VSplitContainer/HSplitContainer2/CenterContainer/ItemsBut" to="Actions/ActionButtons" method="itemsButtonWasPressed"]
