@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/Fonts/ActionButton.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Assets/Fonts/CharacterStatTitle.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Fonts/EnemyNameFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/Fonts/StatFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Assets/Fonts/LogText.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Assets/SpriteArt/GoblinSprite.png" type="Texture" id=5]
@@ -31,7 +31,8 @@ font_data = ExtResource( 7 )
 
 [node name="Combat" type="Node2D"]
 __meta__ = {
-"_edit_horizontal_guides_": [ 31.0905 ]
+"_edit_horizontal_guides_": [ 152.38, 515.101 ],
+"_edit_vertical_guides_": [ -114.437, 409.288 ]
 }
 
 [node name="Log" type="Panel" parent="."]
@@ -131,61 +132,44 @@ __meta__ = {
 
 [node name="MarginContainer2" type="MarginContainer" parent="Stats/MarginContainer/HBoxContainer2"]
 margin_left = 24.0
-margin_right = 324.0
+margin_right = 780.0
 margin_bottom = 378.0
+size_flags_horizontal = 3
 custom_constants/margin_right = 10
 custom_constants/margin_left = 10
 
 [node name="EnemyContainer" type="VBoxContainer" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2"]
 margin_left = 10.0
-margin_right = 290.0
+margin_right = 746.0
 margin_bottom = 378.0
+size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/EnemyContainer"]
-margin_right = 280.0
-margin_bottom = 65.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EnemyBack" type="ColorRect" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/EnemyContainer/CenterContainer"]
-modulate = Color( 0.298039, 0.458824, 0.290196, 1 )
-margin_right = 280.0
-margin_bottom = 65.0
-rect_min_size = Vector2( 280, 65 )
-size_flags_vertical = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EnemyTitle" type="Label" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/EnemyContainer/CenterContainer"]
-modulate = Color( 0.0352941, 0.235294, 0.027451, 1 )
-margin_left = 61.0
-margin_top = 3.0
-margin_right = 219.0
-margin_bottom = 61.0
+[node name="EnemyName" type="Label" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/EnemyContainer"]
+margin_right = 736.0
+margin_bottom = 35.0
 custom_fonts/font = ExtResource( 2 )
-text = "Enemies"
+text = "Scraplin"
 align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="EnemyHPStat" type="Label" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/EnemyContainer"]
-margin_top = 69.0
-margin_right = 280.0
-margin_bottom = 103.0
+margin_top = 39.0
+margin_right = 736.0
+margin_bottom = 73.0
 custom_fonts/font = ExtResource( 3 )
 text = "HP 30 / 30"
 align = 1
 valign = 1
 
-[node name="EnemyHealth" type="TextureProgress" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/EnemyContainer/EnemyHPStat"]
-margin_top = 38.0
-margin_right = 280.0
-margin_bottom = 118.0
-rect_min_size = Vector2( 0, 80 )
+[node name="CenterContainer" type="CenterContainer" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/EnemyContainer"]
+margin_top = 77.0
+margin_right = 736.0
+margin_bottom = 157.0
+
+[node name="EnemyHealth" type="TextureProgress" parent="Stats/MarginContainer/HBoxContainer2/MarginContainer2/EnemyContainer/CenterContainer"]
+margin_left = 243.0
+margin_right = 493.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 250, 80 )
 step = 0.01
 texture_under = ExtResource( 12 )
 texture_over = ExtResource( 10 )

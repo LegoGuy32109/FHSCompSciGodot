@@ -11,6 +11,7 @@ var char2
 #onready var playerHealthLabel = playerStats.get_node("VBoxContainer3/HBoxContainer/VBoxContainer/HPLabel")
 
 func _ready():
+# warning-ignore:unused_variable
 	var godotLogo = load("res://icon.png")
 	var johnHappy = load("res://Assets/SpriteArt/sirJonFaces/johnHappy.png")
 	var johnHurt = load("res://Assets/SpriteArt/sirJonFaces/johnHurt.png")

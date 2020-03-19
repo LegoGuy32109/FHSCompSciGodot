@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/SpriteArt/BeginingIslandTest.tres" type="Texture" id=1]
+[ext_resource path="res://Assets/SpriteArt/LocButtons/disabled.png" type="Texture" id=2]
+[ext_resource path="res://Assets/SpriteArt/LocButtons/enabled.png" type="Texture" id=3]
+[ext_resource path="res://Assets/SpriteArt/LocButtons/hover.png" type="Texture" id=4]
+[ext_resource path="res://Assets/SpriteArt/LocButtons/pressed.png" type="Texture" id=5]
+[ext_resource path="res://Assets/SpriteArt/TestPlayer.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Destination.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/WorldMovement.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5.68744, 5.15746 )
+
+[node name="Beginning Island" type="Node2D"]
+
+[node name="Terrain" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Home" type="TextureButton" parent="Terrain"]
+margin_left = 1046.22
+margin_top = -115.469
+margin_right = 1091.22
+margin_bottom = -89.4688
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 45, 26 )
+rect_pivot_offset = Vector2( 22, 13 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "		"
+}
+
+[node name="Home2" type="TextureButton" parent="Terrain"]
+margin_left = 847.937
+margin_top = -68.8147
+margin_right = 892.937
+margin_bottom = -42.8147
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 45, 26 )
+rect_pivot_offset = Vector2( 22, 13 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "		"
+}
+
+[node name="Home3" type="TextureButton" parent="Terrain"]
+margin_left = 951.742
+margin_top = 69.981
+margin_right = 996.742
+margin_bottom = 95.981
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 45, 26 )
+rect_pivot_offset = Vector2( 22, 13 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "		"
+}
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 510.617, 42.8697 )
+script = ExtResource( 8 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( -0.0668945, 0.136749 )
+scale = Vector2( 0.143012, 0.143012 )
+current = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PlayerIcon" type="Sprite" parent="Player"]
+position = Vector2( -0.579102, -29.8401 )
+scale = Vector2( 0.105144, 0.105144 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( -0.299744, 0.149891 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}

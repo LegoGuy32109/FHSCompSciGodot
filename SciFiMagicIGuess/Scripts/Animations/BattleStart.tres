@@ -4,7 +4,7 @@
 resource_name = "BattleStart"
 length = 3.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("EnemyHPStat/EnemyHealth:value")
+tracks/0/path = NodePath("CenterContainer/EnemyHealth:value")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false

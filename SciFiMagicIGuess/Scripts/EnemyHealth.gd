@@ -1,5 +1,5 @@
 extends TextureProgress
-onready var labelText = get_parent()
+onready var labelText = get_parent().get_parent().get_node("EnemyHPStat")
 export var maxHealth = 30
 export var curHealth = 30
 signal enemyDeath
