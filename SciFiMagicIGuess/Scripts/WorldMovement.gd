@@ -10,26 +10,71 @@ onready var nextLoc = curLoc
 onready var gap = Vector2()
 
 var weMovin = false
-# Called when the node enters the scene tree for the first time.
+var info = [false,false,false,"test desc xd"]
+
+onready var locActions = get_node("LocationActions")
+onready var actions = locActions.get_children()
+
+onready var DestDisc = get_node("DestinationDescription")
+onready var DestText = DestDisc.find_node("text")
+var curDiscText = "test Discription :0"
+
 func _ready():
-	print("Cur loc "+str(curLoc))
+	actionHide()
+	# This doesn't work for some reason
+#	locActions.hide()
+	DestDisc.hide()
+	
+	pass 
+
+func actionHide():
+	for but in actions:
+		print("Hiding "+str(but.name))
+		but.hide()
+		
+func actionShow():
+	for i in range(len(actions)):
+		if info[i]:
+			print("Showing "+str(actions[i].name))
+			actions[i].show()
+			
+func goTo(xy, newinfo):
+	if not weMovin:
+		weMovin = true
+		# Options to display when reaching destination
+		# Reset what's being shown
+		info = newinfo
+		actionHide()
+		DestDisc.hide()
+		
+		# May turn info into a dictionary, i dunno it's very simple
+		curDiscText = info[3]
+		print("We movin!")
+		nextLoc = xy
+		print("Cur loc "+str(curLoc))
+		print("Next loc "+str(nextLoc))
+
+	pass
+
+func investigate():
+	print("investigating")
+	actionHide()
+	DestText.text = curDiscText
+	DestDisc.show()
+	DestText.display()
+	pass
+
+func discriptionEvent(event):
+#	print(event)
+
+	if event.is_action_pressed("mouseDown"):
+		DestDisc.hide()
+		actionShow()
 	pass # Replace with function body.
 
-
-func goTo(xy):
-	weMovin = true
-	print("We movin!")
-	nextLoc = xy
-	print("Cur loc "+str(curLoc))
-	print("Next loc "+str(nextLoc))
-#	gap = Vector2(nextLoc - curLoc)
-	pass
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 # warning-ignore:unused_argument
 func _process(delta):
-#	print("Cur loc "+str(curLoc))
-#	print("Next loc "+str(nextLoc))
-#	print(curLoc != nextLoc)
+
 	if curLoc != nextLoc:
 		gap = Vector2(nextLoc - position)
 # warning-ignore:return_value_discarded
@@ -37,9 +82,15 @@ func _process(delta):
 
 		if gap.abs() < Vector2(10,10):
 			set_position(nextLoc)
+			weMovin = false
+			actionShow()
 	if position == nextLoc:
 # warning-ignore:return_value_discarded
+	# Player reached destination
 		move_and_slide(gap*0.1)
-	
+		
+			
 	curLoc = position
 		
+
+

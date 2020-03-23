@@ -1,3 +1,69 @@
+3/22/2020 Carona Quarantine - Josh
+Guess I have plenty of time to work on this game now.
+
+Yeah it's been a minute since I wrote in the log, I have been doing stuff in the
+game though. I have a scene for a world map where the character clicks on buttons
+to go to the next encounter. I plan to have a minimenu pop up when you arrive at
+a destination. Since it takes a certain amount of time to reach each place, I 
+imagine random encounters will pop up when you move from place to place, only
+on certain paths however. I also want to make scripted encounters a thing mid 
+travel. 
+
+It took me longer than I would've liked to get a character from point to point,
+I had to make a KinematicBody so the move function would actually work, it still
+jitters sometimes when it reaches the point, ugh. I currently have all the butts
+in the scene but I believe I can spawn them through a seperate scene. That might
+be unnecessary since the game is scripted, so that may not be a problem to create
+them through code.
+
+Oh and a huge issue was that the icon wouldn't go directly onto the button, it
+would go to the side. After a lot of tinkering I have the buttons with an offset
+so that their point of rotation isn't in the top left corner, but in the center.
+It doesn't make the buttons scale nicely but that can be fixed on case to case
+bases. Thinking of changing the hover texture it looks a little weird.
+
+Also, need to program that I can't click on another button as the player is 
+moving. It's hard to click another button when moving but still possible.
+
+Oh and yeah background sprite needs to be updated but this is still in concept
+phase. Need to have an encounter come up after a 'yes/no' option when reaching
+destination. Just jam to Paramore and let's do this.
+
+Fixed hover texture looks great now. Still debating on necessity of having
+destination buttons from a scene, because I need to tailor each one when I place
+it. Currently working on semitransparent UI for when you reach a destination. 
+Need to somehow encode on the button what actions should pop up, and then have
+those buttons open up either dialogue scenes or combat options. Investigate can
+bring up a small graphic or something with text describing it. I'm going to poop
+and watch some YouTube rn.
+
+I now have exported variables for each destination so you can customise what
+comes up. Also description text can be modified, it's not implemented yet though.
+Need to come up with popUp dialoge. I like the built in popup stuff but I don't 
+like the bar on top of it. Thinking of changing that by scripting a panel to act
+like a pop up with a button saying 'ok' on it. Probably will be from custom scene.
+
+Would be interested to see what types of animations I can do through an animation
+player... also the description should have a timer displaying the disc like
+dialog, just decided. I'm worried what kinda weird map I have to make so that
+buttons aren't clickable a certain distance away. I'm thinking array that cycles
+what buttons are clickable each time you go to a destination.
+
+Also it's really cool that I have Adobe thanks to being a IUPUI student, go Jags!
+
+Description from investigation now pops up and can be clicked away. I added an
+input event called mouseDown that I'll probably use for future reference. It was
+thinking it was clicking the desc away the minute it came up, whoops so I fixed 
+that. Now every destination with a description can have the popup come up and 
+animate the text as it comes on with the timer. I think I can change the timer 
+delay if I want to make it more spooky or something but i dunno if I ever do.
+
+Good progress today, excited to keep working over spring break and rest of 
+quarentine. Woo hoo! Not really it's kinda sad. Just surviving.
+
+
+
+
 3/10/2020 Enlongated Smart - Josh
 Haven't researched animation players. I'll do that now.
 
@@ -9,9 +75,9 @@ panel disapear in the findEnemyAttack method, which fixed that problem.
 Now I could start drawing an actual scraplin, or make an animation for the
 enemy taking damage. Decisions decisions...
 
-Make an animation. For damage and death. Programming wise it isn't that hard to 
-put it inwhen you make the animation. They aren't perfect, but they're a great 
-proof if concept. I've made this edit in the Desktop GitHub cloned repository, so
+Made an animation. For damage and death. Programming wise it isn't that hard to 
+put it in when you make the animation. They aren't perfect, but they're a great 
+proof of concept. I've made this edit in the Desktop GitHub cloned repository, so
 I hope it works when I upload it. 
 
 
