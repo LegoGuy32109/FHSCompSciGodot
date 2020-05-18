@@ -1,5 +1,5 @@
 extends VBoxContainer
-const ItemScene = preload("res://Scenes/Item.tscn")
+const ItemScene = preload("res://Scenes/UX/Item.tscn")
 var items = []
 
 func _ready():

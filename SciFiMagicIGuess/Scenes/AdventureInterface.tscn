@@ -1,0 +1,202 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Fonts/ActionButton.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Fonts/AdventureDescFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scripts/Animations/TextCrawl.anim" type="Animation" id=3]
+[ext_resource path="res://Scripts/AdventureInterface.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/UX/ItemMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/SpriteArt/GameTempground.png" type="Texture" id=6]
+
+[node name="AdventureInterface" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="."]
+margin_top = 728.0
+margin_right = 1600.0
+margin_bottom = 936.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AdventureActions" type="HBoxContainer" parent="Panel"]
+margin_left = 16.0
+margin_top = 8.0
+margin_right = 1576.0
+margin_bottom = 147.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttackContainer" type="MarginContainer" parent="Panel/AdventureActions"]
+margin_right = 387.0
+margin_bottom = 139.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AttackBut" type="Button" parent="Panel/AdventureActions/AttackContainer"]
+modulate = Color( 1, 0.196078, 0.0509804, 1 )
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 377.0
+margin_bottom = 129.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_constants/hseparation = 9
+text = "Attack"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InvestigateContainer" type="MarginContainer" parent="Panel/AdventureActions"]
+margin_left = 391.0
+margin_right = 778.0
+margin_bottom = 139.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="InvestigateBut" type="Button" parent="Panel/AdventureActions/InvestigateContainer"]
+modulate = Color( 1, 0.945098, 0.694118, 1 )
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 377.0
+margin_bottom = 129.0
+custom_fonts/font = ExtResource( 1 )
+custom_constants/hseparation = 9
+text = "Investigate"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemsContainer" type="MarginContainer" parent="Panel/AdventureActions"]
+margin_left = 782.0
+margin_right = 1169.0
+margin_bottom = 139.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="ItemsBut" type="Button" parent="Panel/AdventureActions/ItemsContainer"]
+modulate = Color( 1, 0.741176, 0.407843, 1 )
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 377.0
+margin_bottom = 129.0
+custom_fonts/font = ExtResource( 1 )
+custom_constants/hseparation = 9
+text = "Items"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestContainer" type="MarginContainer" parent="Panel/AdventureActions"]
+margin_left = 1173.0
+margin_right = 1560.0
+margin_bottom = 139.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="RestBut" type="Button" parent="Panel/AdventureActions/RestContainer"]
+modulate = Color( 0.592157, 0.886275, 1, 1 )
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 377.0
+margin_bottom = 129.0
+custom_fonts/font = ExtResource( 1 )
+custom_constants/hseparation = 9
+text = "Rest"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="."]
+modulate = Color( 0.992157, 0.819608, 0.223529, 0.380392 )
+margin_right = 1600.0
+margin_bottom = 192.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1600.0
+margin_bottom = 184.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 15
+custom_constants/margin_left = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextLog" type="RichTextLabel" parent="MarginContainer"]
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 1595.0
+margin_bottom = 184.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 2 )
+text = "The city ahead, Alcarann, is dangerous. It contains many unfortunate souls lost from the terrible war. The citizen's solace comes from their enchanted ruler, a magistrate seemingly blessed with godlike abilities. "
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer"]
+autoplay = "TextCrawl"
+anims/TextCrawl = ExtResource( 3 )
+
+[node name="Items" type="WindowDialog" parent="."]
+modulate = Color( 0.996078, 0.796078, 0.560784, 0.564706 )
+margin_left = 815.0
+margin_top = 271.0
+margin_right = 1542.0
+margin_bottom = 643.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemMenu" parent="Items" instance=ExtResource( 5 )]
+position = Vector2( -33.1489, -8.59418 )
+script = null
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+modulate = Color( 1, 0.905882, 0.905882, 1 )
+position = Vector2( -118.148, 4.54413 )
+scale = Vector2( 1.29537, 0.772434 )
+texture = ExtResource( 6 )
+centered = false
+flip_h = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PlayerAvatar" type="KinematicBody2D" parent="."]
+[connection signal="pressed" from="Panel/AdventureActions/AttackContainer/AttackBut" to="." method="attack"]
+[connection signal="pressed" from="Panel/AdventureActions/ItemsContainer/ItemsBut" to="." method="itemsPressed"]

@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Sci Fi Magic I Guess"
+config/name="Trouble in Teckland WIP"
 run/main_scene="res://Scenes/Combat.tscn"
 config/icon="res://Assets/SpriteArt/GoblinSprite.png"
 
@@ -34,4 +34,5 @@ mouseDown={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"

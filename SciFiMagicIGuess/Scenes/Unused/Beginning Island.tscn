@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/SpriteArt/BeginingIslandTest.tres" type="Texture" id=1]
+[ext_resource path="res://Assets/SpriteArt/TestPlayer.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Unused/WorldMovement.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Unused/DestinationButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Fonts/WorldActions.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Scenes/Unused/DestinationDescription.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/SpriteArt/BetterHouse.png" type="Texture" id=12]
+
+
+
+
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5.68744, 5.15746 )
+
+[node name="Beginning Island" type="Node2D"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Terrain" type="Sprite" parent="."]
+scale = Vector2( 2.01239, 2.01239 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackgroundElements" type="Node2D" parent="."]
+
+[node name="House" type="Sprite" parent="BackgroundElements"]
+position = Vector2( 1805.51, 76.0622 )
+scale = Vector2( 0.295484, 0.309517 )
+texture = ExtResource( 12 )
+
+[node name="House2" type="Sprite" parent="BackgroundElements"]
+position = Vector2( 2132.79, -359.471 )
+scale = Vector2( 0.276603, 0.289739 )
+texture = ExtResource( 12 )
+flip_h = true
+
+[node name="House3" type="Sprite" parent="BackgroundElements"]
+position = Vector2( 1649.42, -219.748 )
+scale = Vector2( 0.276603, 0.221766 )
+texture = ExtResource( 12 )
+flip_h = true
+
+[node name="DestinationButton" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2171.85, -204.309 )
+
+[node name="DestinationButton2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1680.34, -94.1622 )
+attack = true
+investigate = true
+rest = true
+
+[node name="DestinationButton3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1718.15, 234.471 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 1721.55, -50.279 )
+script = ExtResource( 8 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( -0.0666504, -0.148621 )
+scale = Vector2( 0.143012, 0.143012 )
+current = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PlayerIcon" type="Sprite" parent="Player"]
+position = Vector2( -0.579102, -29.8401 )
+scale = Vector2( 0.105144, 0.105144 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( -0.299744, 0.149891 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LocationActions" type="VBoxContainer" parent="Player"]
+margin_left = -58.0
+margin_top = -214.0
+margin_right = 60.0
+margin_bottom = -86.0
+alignment = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Attack" type="Button" parent="Player/LocationActions"]
+modulate = Color( 1, 1, 1, 0.627451 )
+margin_right = 119.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = ExtResource( 10 )
+text = "Attack!"
+
+[node name="Investigate" type="Button" parent="Player/LocationActions"]
+modulate = Color( 1, 1, 1, 0.627451 )
+margin_top = 44.0
+margin_right = 119.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = ExtResource( 10 )
+text = "Investigate"
+
+[node name="Rest" type="Button" parent="Player/LocationActions"]
+modulate = Color( 1, 1, 1, 0.627451 )
+margin_top = 88.0
+margin_right = 119.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = ExtResource( 10 )
+text = "Rest"
+
+[node name="DestinationDescription" parent="Player" instance=ExtResource( 11 )]
+modulate = Color( 1, 1, 1, 0.756863 )
+margin_left = -197.0
+margin_top = -213.0
+margin_right = 203.0
+margin_bottom = -81.0
+[connection signal="pressed" from="Player/LocationActions/Investigate" to="Player" method="investigate"]
+[connection signal="gui_input" from="Player/DestinationDescription" to="Player" method="discriptionEvent"]

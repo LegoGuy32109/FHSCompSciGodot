@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="Character Creator" type="Node2D"]
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_left = 752.078
+margin_top = 344.418
+margin_right = 872.078
+margin_bottom = 398.418
+text = "Head Choice"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

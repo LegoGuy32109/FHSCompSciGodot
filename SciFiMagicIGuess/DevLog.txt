@@ -1,3 +1,56 @@
+4/22/2020 Working on Interface - Josh
+Finished Item issue, wanted to have a different exit button title at the top of
+list for combat and interface, so that's why I now have two diffrent item list
+scenes, one for combat the other for the interface and two seperate itemList 
+scripts. Not that intuitive but there wasn't a way to pass a parameter to item
+script or have it check what scene it's in. Well...
+
+Ok fixed that reverting some work but it's more simple. Weird err in output can't
+find what is trying to load source code. I'll restart and see what happens.
+Restarting fixed the issue, also button in interface to quit still works. 
+
+I need to come up with functionality for each item when clicked:
+1) subtracts item count unless tool, remove item if x0
+2) broadcasts what item was clicked
+3) Interpret broadcast to do something meaningful
+All this needs to interact with a dictonary or datatype of invetory so the item
+list loads the buttons with what items the player has at a time
+Also) Subtracting an item needs to subtract the player dictonary as well when 
+button clicked, whether that's through the signal the dictonary recomplies and 
+then the item list refreshes accordingly... actually that makes most sense I'll
+do that. I hope.
+
+
+
+
+
+4/20/2020 Wow, been a while - Josh
+Looks like I'm lazier than I thought, haven't put anything in the log for a month.
+
+World map is not working, spent 4 weeks trying to not make character sprite
+jitter and have normal travel but it's not worth it anymore. Shifting gears to an
+'Adventure Interface' That will have options as buttons at the bottom of the 
+screen. Info in text can be displayed in a type of over head description, like 
+text at the beginning of the movie. Using a rich text box for the scroll option.
+I have an animation player animating the text crawl and I want it to scroll to 
+the bottom as it animates but the text box just jumps to the bottom on default.
+So, keep descriptions short I guess?
+
+I decided to go to this format for exploring the world because it's more similar
+to text based games, which I have better experience with. I have buttons already
+applied for Attack, Investigate, Items, and Rest, but I will hide those and only
+have the buttons up for which options are avalible to the player at the moment.
+
+I will need a script to create a button inside of a margin container to match 
+the others, and be able to connect it's signal to another function that changes
+the scenario or somthing. It's a little confusing, also need to remember to 
+delete buttons I make to save memory.
+
+I just got really tired I'm going to go to bed.
+
+
+
+
 3/22/2020 Carona Quarantine - Josh
 Guess I have plenty of time to work on this game now.
 
