@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Fonts/ActionButton.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Fonts/AdventureDescFont.tres" type="DynamicFont" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Scripts/AdventureInterface.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/UX/ItemMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/SpriteArt/GameTempground.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/MasterStoryNode.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Sandwich.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/DefaultNode.gd" type="Script" id=9]
 
 [node name="AdventureInterface" type="Node2D"]
 script = ExtResource( 4 )
@@ -27,7 +30,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AttackContainer" type="MarginContainer" parent="Panel/AdventureActions"]
+[node name="AttackContainer" type="MarginContainer" parent="Panel/AdventureActions" groups=[
+"DefaultChoiceButtons",
+]]
 margin_right = 387.0
 margin_bottom = 139.0
 size_flags_horizontal = 3
@@ -53,7 +58,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InvestigateContainer" type="MarginContainer" parent="Panel/AdventureActions"]
+[node name="InvestigateContainer" type="MarginContainer" parent="Panel/AdventureActions" groups=[
+"DefaultChoiceButtons",
+]]
 margin_left = 391.0
 margin_right = 778.0
 margin_bottom = 139.0
@@ -80,7 +87,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemsContainer" type="MarginContainer" parent="Panel/AdventureActions"]
+[node name="ItemsContainer" type="MarginContainer" parent="Panel/AdventureActions" groups=[
+"DefaultChoiceButtons",
+]]
 margin_left = 782.0
 margin_right = 1169.0
 margin_bottom = 139.0
@@ -107,7 +116,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RestContainer" type="MarginContainer" parent="Panel/AdventureActions"]
+[node name="RestContainer" type="MarginContainer" parent="Panel/AdventureActions" groups=[
+"DefaultChoiceButtons",
+]]
 margin_left = 1173.0
 margin_right = 1560.0
 margin_bottom = 139.0
@@ -198,5 +209,29 @@ __meta__ = {
 }
 
 [node name="PlayerAvatar" type="KinematicBody2D" parent="."]
+
+[node name="MasterStoryNode" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="Sandwich\?" type="Node" parent="MasterStoryNode"]
+script = ExtResource( 8 )
+
+[node name="Choice of Bread" type="Node" parent="MasterStoryNode/Sandwich\?"]
+
+[node name="Italian" type="Node" parent="MasterStoryNode/Sandwich\?/Choice of Bread"]
+
+[node name="WholeWheat" type="Node" parent="MasterStoryNode/Sandwich\?/Choice of Bread"]
+
+[node name="Anything to Drink\?" type="Node" parent="MasterStoryNode/Sandwich\?"]
+
+[node name="Water" type="Node" parent="MasterStoryNode/Sandwich\?/Anything to Drink\?"]
+
+[node name="Soda" type="Node" parent="MasterStoryNode/Sandwich\?/Anything to Drink\?"]
+
+[node name="Die" type="Node" parent="MasterStoryNode"]
+script = ExtResource( 9 )
+
+[node name="DefaultNode" type="Node" parent="MasterStoryNode"]
+script = ExtResource( 9 )
 [connection signal="pressed" from="Panel/AdventureActions/AttackContainer/AttackBut" to="." method="attack"]
 [connection signal="pressed" from="Panel/AdventureActions/ItemsContainer/ItemsBut" to="." method="itemsPressed"]

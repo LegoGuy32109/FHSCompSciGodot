@@ -18,12 +18,12 @@ onready var partyContainer = get_owner().find_node("PartyContainer")
 
 onready var enemyPlayer = get_owner().find_node("EnemyAnimator")
 
-var r = RandomNumberGenerator.new()
+var r = RandomNumberGenerator.new() 
 var attackDict = {}
 #Temp for testing purposes
 var enemyAttackDict = {"Sharp Metal":[0,4]}
 #Used for no repition of textSkip
-var introOver = false
+var introOver = false   
 var skirmishOver = false
 
 func _ready():

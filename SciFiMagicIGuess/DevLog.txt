@@ -1,3 +1,58 @@
+5/28/2020 Finished Binary Logic! - Josh
+Phew, I now have the masterStoryNode with all the methods to run binary choices,
+it can take the text for the yes and no buttons, and the name of the nodes it 
+needs to go to, (that way the nodes can be anywhere under the masterStoryNode)
+and creates the buttons for userChoice, and best of all it deletes itself after
+you make that choice! That sounds stupidly small but this is a big step for the
+game's story telling. I can easily expand to more options, or a single option.
+
+I think I should rework the function to create as many buttons it needs, taking
+a dictonary of every button text and where it goes on the node tree, the lenght
+of the dictionary can tell how many buttons needs to be made, key is button text,
+value is where button will take you.
+
+I might keep the binary option function because it is useful for quick yes no 
+questions. But I will need to write this new method I came up with
+
+I'm a little tired though, I will upload this to GitHub and relax tonight :)
+
+
+
+5/23/2020 Binary Option - Josh
+Worked on a function for the MasterStoryNode, so that it can create a simple
+yes or no option for the player, function creates the buttons. But buttons don't
+have their pressed signal connect to anything. That's next on the list.
+
+DON'T FORGET
+Make sure buttons in the MasterStoryNode creation can be deleted or 'quenedFree'
+to save on memory. The default buttons "attack, rest, etc." have a method to hide
+or show them. Using the cool functionality of methods having default parameters I
+can still change. Pretty cool
+
+
+
+
+5/18/2020 Rearranged Folders - Josh
+Felt inspired to hit the game some more, rearranged the folders and did some
+inherirtance fixing. Just paste /UX and it fixed the scene loading issues. 
+Moving the scripts was even easier, seprated scenes and scripts to combat and
+"Unused" folders. Unused is the work I did for the world map interface. 
+
+I want to have an encounter or quest that involves mysterious gang on shadow 
+panthers running through the forested countryside at night. The vanish like 
+shadows in the morning, or so it seems. Trails are hammered with tracks of the
+fearsome beasts, but they are actually ethereal. Got the idea from a WOW video.
+
+Also interested in the player being in an advanced lab dealing with 'grey goo' 
+warriors bursting from test tubes. A cool result instead of fighting them all 
+would be to to crack up their aggression and have them fight eachother and
+the security hounding you.
+
+Working on having something actually happen in this game. It's tough.
+
+
+
+
 4/22/2020 Working on Interface - Josh
 Finished Item issue, wanted to have a different exit button title at the top of
 list for combat and interface, so that's why I now have two diffrent item list
