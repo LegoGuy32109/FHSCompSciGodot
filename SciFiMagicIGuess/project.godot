@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Trouble in Teckland WIP"
-run/main_scene="res://Scenes/Combat.tscn"
+run/main_scene="res://Scenes/AdventureInterface.tscn"
 config/icon="res://Assets/SpriteArt/GoblinSprite.png"
 
 [display]

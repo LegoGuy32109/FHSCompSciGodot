@@ -1,3 +1,48 @@
+6/9/2020 Text displays going through options - Josh
+Now the masterStoryNode can change the text on the top of the screen, and I
+have that textbox animating naturally when text is updated to it. Continue button
+sets text to 200 visible characters which should be everthing it needs, doesn't
+work for some reason when you set it to percent_visible 100%. 
+
+Framework for adventureing is looking good, the nodes are all nice and the text
+is the first of much functionality I'm trying to give each story node. Also, an
+Ideas file is in the project for the different names, areas, and scenarions I 
+have for the game. It's a text document like this. Also I kinda just wrote this
+because I want to upload it to GitHub.
+
+Default scene is now set to the adventuring interface, becuase that's what I've 
+been working on for a long 2 months now. It should obviously be the title screen
+but the adventuring interface is how player will be interoduced to the game.
+
+I think the game should be like a text based adventure with a UI, that's my best
+description. Along with turnbased RPG combat.
+
+
+
+
+5/29/2020 Removed Binary Logic haha - Josh
+Turns out, my dictonary idea is way more effective and shorter code than the
+binary option. Don't even need a buttons dictonary, I can just use the action
+contianer to add buttons and remove buttons from. Not sure if I said this but 
+the default buttons like 'attack' I have marked as defaultButtonGroup and when 
+I delete stuff from the container it doesn't to that to those four. 
+
+To recap, the masterStoryNode starts the dialogue tree, and each option directs
+to a node down the tree. Now I can have the buttons skip anywhere, it doesn't
+have to be direct inheiritance. I have them inheirt like a tree for conceptual
+reasons. As long as the node has a script attached to it it will run, or default
+to default node. I want to eventually have a string or array that records each
+choice the player makes and can be reported to the console.
+
+Going to have all these scripts moved to a story folder rn
+
+Idea - a choice can display stats with a copy of the choice button scene in a 
+VBox container and a label descripting what I want, functions the same but needs
+more data.. hm
+
+
+
+
 5/28/2020 Finished Binary Logic! - Josh
 Phew, I now have the masterStoryNode with all the methods to run binary choices,
 it can take the text for the yes and no buttons, and the name of the nodes it 

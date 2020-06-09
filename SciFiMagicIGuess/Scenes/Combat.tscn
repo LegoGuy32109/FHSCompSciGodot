@@ -46,9 +46,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Log"]
-autoplay = "LogTextIntro"
+autoplay = "TextCrawl"
 method_call_mode = 1
-anims/LogTextIntro = ExtResource( 8 )
+anims/TextCrawl = ExtResource( 8 )
 
 [node name="TextBack" type="Panel" parent="Log"]
 modulate = Color( 0.741176, 0.8, 0.670588, 1 )
