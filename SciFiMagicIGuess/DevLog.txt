@@ -1,3 +1,17 @@
+2/20/2021 Wow it's been a while hasn't it...
+Almost been a year, I started college at IUPUI for Computer Science, loving it! But I do get pretty busy so I don't see myself working on this much. I made this awesome Discord for the compsci peeps, to ask questions and get homework help. It's been going great! I have just recently been forced in a more heavy moderating role as we have almost 200 people in there now, trolls are sadly inevitable. 
+
+But the reason I opened up this dusty project is because I wanted to show it off, get a WIP up on itch.io so I share the link with this new club. The IUPUI game developers. I was sadly unable to attend the full meeting on their discord, but I stuck my neck in for a bit and they seem like great peeps. The funny thing is, it feels so much like the compsci club in high school, but the best part about it is that I'm not running it! I like not being forced to make decisions which was becomming a big annoyance for me in the later years of my time at the club. It's in good hands though, Aaron was always more passionate about it then me, and I couldn't ask for a better leader for that clubs' future, but I am certainly done being a leader there. I certainly want to share IUPUI gamer club projects with them though, and would love to come over to do a talk if they were interested.
+
+Oh right, I'm here to get a working demo as a little resume of my experience with game development. That is my goal. I will accomplish it. I will show it off in their discord, that club has been going on for a decade I heard, crazy, I've never joined something with that much history but has such an equal atmosphere, I guess that's the benefit of student led clubs. Wow, I love this. Putting passion behind development, and not just turning something in at 11:59. I don't think I'll have enough time to do it today but maybe later tonight, after a lil sympathy party for andrew's broken collarbone. 
+
+I did a test run and the scenes look good, I just need to have the title on startup (that's what I'm honestly most proud of) and clean up the story scene, make sure combat is working. And publish to HTML5 because that is the future, I don't wanna download anything to play a game.
+
+ALSO FORMAT->WORDWRAP IS THE FUTURE, I NEVER HAVE TO HIT RETURN EVERYTIME I TYPE SOMETHING LOL
+
+
+
+
 6/9/2020 Text displays going through options - Josh
 Now the masterStoryNode can change the text on the top of the screen, and I
 have that textbox animating naturally when text is updated to it. Continue button
